@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+   </head>
+   <body>
+      <h1>Disable a category</h1>
+      <label for="cat_name">Enter a category name to disable:</label><br>
+      <input type="text" id="cat_name" name="cat_name">
+      <input type="button" value="Submit" onclick="send()">
+      <p id="resp"></p>
+      <script>
+         function send() {
+            var resp = document.getElementById("resp");
+            const cat_name = document.getElementById("cat_name").value;
+            var formData = new FormData();
+            formData.append("cat_name", cat_name);
+
+            fetch('/disable', {
+                  method: 'POST',
+                  body: formData,
+               })
+               .then(response => response.json())
+               .then(data => {
+                  resp.innerHTML = JSON.stringify(data); // data is a JSON object
+               })
+               .catch(error => {
+                  console.error(error);
+               });
+         }
+      </script>
+   </body>
+</html>
