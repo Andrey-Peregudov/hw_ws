@@ -4,7 +4,7 @@ from typing import Optional
 
 class UserCreate(BaseModel):
     username: str
-    address: Optional[str]
-    name: str
-    tel: Optional[str]
-    password: str
+    # address: Optional[str]
+    # name: str
+    # tel: Optional[str]
+    # password: str
